@@ -199,13 +199,16 @@ header .container ul li a {
     z-index: 2;
 }
 
-@media (max-width: 768px) {
-    header .container ul li a {
-        padding: 20px 10px;
-        left: 10px;
-    }
+header .container ul li a:hover,
+header .container ul li a:active {
+    color: var(--main-color);
+    border-bottom: 1px solid var(--main-color);
+}
+
+@media (max-width: 991px) {
     header .container ul li a:hover {
         padding-left: 20px;
+        border: none;
     }
 }
 
@@ -236,14 +239,9 @@ header .container ul li a {
         border-bottom: 1px solid white;
     }
     header .container ul li a {
-        padding: 0 10px;
+        padding: 20px 10px;
+        left: 10px;
     }
-}
-
-header .container ul li a:hover,
-header .container ul li a:active {
-    color: var(--main-color);
-    border-bottom: 1px solid var(--main-color);
 }
 
 header .container .form {
