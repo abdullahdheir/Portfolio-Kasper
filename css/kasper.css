@@ -548,7 +548,6 @@ header .container .form i {
 }
 
 @media (min-width:992px) {
-    .portfolio .portfolio-content .photos .photo:hover {}
     .portfolio .portfolio-content .photos .photo:hover .text {
         display: block;
         transform: translateY(-100%);
