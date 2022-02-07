@@ -548,12 +548,8 @@ header .container .form i {
 }
 
 @media (min-width:992px) {
-    .portfolio .portfolio-content .photos .photo:hover {
-        transform: scale(1.1);
-        /* transform: rotate(2.5deg); */
-    }
+    .portfolio .portfolio-content .photos .photo:hover {}
     .portfolio .portfolio-content .photos .photo:hover .text {
-        /* transform: scaleY(1); */
         display: block;
         transform: translateY(-100%);
     }
