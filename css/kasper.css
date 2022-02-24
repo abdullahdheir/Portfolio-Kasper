@@ -938,7 +938,7 @@ header .container .form i {
   background-color: var(--main-color);
   position: absolute;
   height: 100%;
-  transition: width 0.3s linear;
+  transition: width 0.5s linear;
 }
 
 .skills .content .our-skills .content-skills .prog-header .prog span::after {

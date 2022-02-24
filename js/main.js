@@ -40,7 +40,21 @@ window.onscroll = function () {
       }
     }
   }
+  // Skills Scroll Section
+  if (window.scrollY >= skillSection.offsetTop) {
+    skillSpan.forEach((span) => {
+      span.style.width = span.dataset.progress;
+    });
+  }
+  // About Secation
+  if (window.scrollY >= aboutSection.offsetTop) {
+    if (!started) {
+      countAbout.forEach((e) => increasNumber(e));
+    }
+    started = true;
+  }
 };
+
 // Protfoilo Secation
 
 const list = document.querySelectorAll(".portfolio-content ul > li");
@@ -79,14 +93,6 @@ list.forEach((e) => {
 const countAbout = document.querySelectorAll(".about-two .text span");
 const aboutSection = document.querySelector(".about");
 let started = false;
-window.onscroll = function () {
-  if (window.scrollY >= aboutSection.offsetTop) {
-    if (!started) {
-      countAbout.forEach((e) => increasNumber(e));
-    }
-    started = true;
-  }
-};
 
 function increasNumber(el) {
   let count = el.dataset.count;
@@ -100,16 +106,16 @@ function increasNumber(el) {
 
 // Skills Secation
 
-let skillSection = document.querySelector(".skills");
-let skillSpan = document.querySelectorAll(".skills .content-skills span");
+const skillSection = document.querySelector(".skills");
+const skillSpan = document.querySelectorAll(".skills span");
 
 skillSpan.forEach((span) => {
   span.style.width = 0;
 });
-window.onscroll = function () {
-  if (window.scrollY >= skillSection.offsetTop) {
-    skillSpan.forEach((span) => {
-      span.style.width = span.dataset.progress;
-    });
-  }
-};
+// window.onscroll = function () {
+//   if (window.scrollY >= skillSection.offsetTop) {
+//     skillSpan.forEach((span) => {
+//       span.style.width = span.dataset.progress;
+//     });
+//   }
+// };
