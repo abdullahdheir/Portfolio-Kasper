@@ -32,9 +32,9 @@ let left = document.querySelector(".landing .left");
 let counter = 0;
 let index = 1;
 let iamge = [
-  "/imgs/slider/bg1.jpg",
-  "/imgs/slider/bg2.jpg",
-  "/imgs/slider/bg3.jpg",
+  "imgs/slider/bg3.jpg",
+  "imgs/slider/bg2.jpg",
+  "imgs/slider/bg3.jpg",
 ];
 
 balls.forEach((e) => {
@@ -48,7 +48,6 @@ balls.forEach((e) => {
     let name = e.getAttribute("name");
     landing.style.cssText = `background-image: url(${iamge[name]});`;
     index = name;
-    console.log();
   };
 });
 
