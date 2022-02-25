@@ -23,19 +23,20 @@
         <a href="#">
           <img src="imgs/logo.png" alt="" />
         </a>
-        <nav>
+        <nav id="nav">
           <i class="fas fa-bars toggle-menu"></i>
           <ul>
-            <li><a class="active" href="#landing">Home</a></li>
+            <li><a href="#landing">Home</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
-          <div class="form">
-            <i class="fas fa-search"></i>
-          </div>
+          <form class="form">
+            <i id="search" class="fas fa-search"></i>
+            <input type="text" name="search" id="search" />
+          </form>
         </nav>
       </div>
     </header>
@@ -56,8 +57,8 @@
           </p>
         </div>
       </div>
-      <i class="fas fa-angle-left change-background fa-2x"></i>
-      <i class="fas fa-angle-right change-background fa-2x"></i>
+      <i class="fas fa-angle-left change-background left fa-2x"></i>
+      <i class="fas fa-angle-right change-background right fa-2x"></i>
       <ul class="balls">
         <li></li>
         <li class="active"></li>
@@ -364,25 +365,41 @@
               <div class="prog-header">
                 <h2>Adobe</h2>
                 <div class="prog">
-                  <span style="width: 95%" data-progress="95%"></span>
+                  <span
+                    style="width: 95%"
+                    data-progress="95"
+                    data-prog="0"
+                  ></span>
                 </div>
               </div>
               <div class="prog-header">
                 <h2>Html & Css</h2>
                 <div class="prog">
-                  <span style="width: 93%" data-progress="93%"></span>
+                  <span
+                    style="width: 93%"
+                    data-progress="93"
+                    data-prog="0"
+                  ></span>
                 </div>
               </div>
               <div class="prog-header">
                 <h2>javaScript</h2>
                 <div class="prog">
-                  <span style="width: 85%" data-progress="85%"></span>
+                  <span
+                    style="width: 85%"
+                    data-progress="85"
+                    data-prog="0"
+                  ></span>
                 </div>
               </div>
               <div class="prog-header">
                 <h2>php</h2>
                 <div class="prog">
-                  <span style="width: 87%" data-progress="87%"></span>
+                  <span
+                    style="width: 87%"
+                    data-progress="87"
+                    data-prog="0"
+                  ></span>
                 </div>
               </div>
             </div>
@@ -554,6 +571,7 @@
         </div>
       </div>
     </footer>
+    <button id="up"><i class="fas fa-angle-up"></i></button>
     <script src="js/main.js"></script>
   </body>
 </html>

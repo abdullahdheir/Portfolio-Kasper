@@ -1,8 +1,13 @@
 // Nav Bar Secation
 
+let started = false;
+let st = false;
 const headi = document.querySelector("header");
 const nav = document.querySelector(".toggle-menu");
+const navBar = document.getElementById("nav");
 const navList = document.querySelector("header .container ul");
+const navAfter = window.getComputedStyle(navBar, "::after");
+const buttonUp = document.getElementById("up");
 
 nav.onclick = function () {
   if (navList.hasAttribute("style") === true) {
@@ -12,49 +17,72 @@ nav.onclick = function () {
   }
 };
 
-window.onscroll = function () {
-  const navAfter = document.createElement("style");
-  const inHTML = `header .container nav::after {
-      display:none;
-  }`;
-  navAfter.innerHTML = inHTML;
-  if (window.scrollY >= 50) {
-    headi.style.cssText =
-      "position:fixed; background-color: rgb(25, 200, 250,75%); transition:background-color .3s linear; top:0px";
-    document.head.removeAttribute("data-none");
-  }
-  if (window.scrollY <= 500) {
-    document.head.setAttribute("data-none", "");
-    headi.style.cssText = "position:fixed; ";
-  }
-  if (window.scrollY >= 50) {
-    const sty = document.querySelectorAll("style");
-    const length = sty.length;
-    if (document.head.hasAttribute("data-none") === true) {
-      sty.forEach((e) => {
-        e.remove();
-      });
-    } else {
-      if (length === 0) {
-        document.body.prepend(navAfter);
+// Form Search Secation
+
+const form = document.querySelector(".landing .form");
+const searchBtn = document.querySelector(".landing .search");
+const searchInp = document.getElementById("search");
+
+// Slider Image Secation
+
+const balls = document.querySelectorAll(".balls > li");
+let landing = document.getElementById("landing");
+let right = document.querySelector(".landing .right");
+let left = document.querySelector(".landing .left");
+let counter = 0;
+let index = 1;
+let iamge = [
+  "../imgs/slider/bg1.jpg",
+  "../imgs/slider/bg2.jpg",
+  "../imgs/slider/bg3.jpg",
+];
+
+balls.forEach((e) => {
+  e.setAttribute("name", `${counter}`);
+  counter++;
+  e.onclick = function () {
+    balls.forEach((el) => {
+      el.classList.remove("active");
+    });
+    e.classList.add("active");
+    let name = e.getAttribute("name");
+    landing.style.cssText = `background-image: url(${iamge[name]});`;
+    index = name;
+    console.log();
+  };
+});
+
+right.onclick = function () {
+  if (index < iamge.length - 1) {
+    index++;
+    landing.style.cssText = `background-image: url(${iamge[index]});`;
+    balls.forEach((el) => {
+      el.classList.remove("active");
+      if (el.getAttribute("name") == index) {
+        el.classList.add("active");
       }
-    }
-  }
-  // Skills Scroll Section
-  if (window.scrollY >= skillSection.offsetTop) {
-    skillSpan.forEach((span) => {
-      span.style.width = span.dataset.progress;
     });
   }
-  // About Secation
-  if (window.scrollY >= aboutSection.offsetTop) {
-    if (!started) {
-      countAbout.forEach((e) => increasNumber(e));
-    }
-    started = true;
+};
+left.onclick = function () {
+  if (index >= 1) {
+    index--;
+    landing.style.cssText = `background-image: url(${iamge[index]});`;
+    balls.forEach((el) => {
+      el.classList.remove("active");
+      if (el.getAttribute("name") == index) {
+        el.classList.add("active");
+      }
+    });
   }
 };
 
+buttonUp.onclick = function () {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+};
 // Protfoilo Secation
 
 const list = document.querySelectorAll(".portfolio-content ul > li");
@@ -92,7 +120,6 @@ list.forEach((e) => {
 
 const countAbout = document.querySelectorAll(".about-two .text span");
 const aboutSection = document.querySelector(".about");
-let started = false;
 
 function increasNumber(el) {
   let count = el.dataset.count;
@@ -106,16 +133,60 @@ function increasNumber(el) {
 
 // Skills Secation
 
-const skillSection = document.querySelector(".skills");
-const skillSpan = document.querySelectorAll(".skills span");
+let skillSection = document.querySelector(".skills");
+let skillSpan = document.querySelectorAll(".skills span");
 
 skillSpan.forEach((span) => {
   span.style.width = 0;
 });
-// window.onscroll = function () {
-//   if (window.scrollY >= skillSection.offsetTop) {
-//     skillSpan.forEach((span) => {
-//       span.style.width = span.dataset.progress;
-//     });
-//   }
-// };
+
+window.onscroll = function () {
+  if (window.scrollY >= 50) {
+    headi.style.cssText =
+      "position:fixed; background-color: rgb(25, 200, 250,75%); transition:background-color .3s linear; top:0px";
+    navBar.style.setProperty("--none-value", "none");
+    buttonUp.style.opacity = "1";
+  }
+  if (window.scrollY <= 500) {
+    document.head.setAttribute("data-none", "");
+    headi.style.cssText = "position:fixed; ";
+    navBar.style.setProperty("--none-value", "blcok");
+    buttonUp.style.opacity = "0";
+  }
+
+  // Skills Scroll Section
+
+  if (
+    window.scrollY >= skillSection.offsetTop + 200 ||
+    window.scrollY >= skillSection.offsetTop - 200
+  ) {
+    skillSpan.forEach((span) => {
+      span.style.width = `${span.dataset.progress}%`;
+    });
+    if (!started) {
+      skillSpan.forEach((e) => {
+        let count = e.dataset.progress;
+        let content = e.dataset.prog;
+        let counter = setInterval(() => {
+          content++;
+          e.setAttribute("data-prog", `${content}`);
+          if (e.getAttribute("data-prog") == count) {
+            clearInterval(counter);
+            setTimeout(() => {
+              e.setAttribute("data-prog", `${content}%`);
+            }, 50);
+          }
+        }, 1000 / count);
+      });
+    }
+    started = true;
+  }
+  // About Secation
+
+  if (window.scrollY >= aboutSection.offsetTop) {
+    if (!st) {
+      countAbout.forEach((e) => increasNumber(e));
+    }
+    st = true;
+  }
+};

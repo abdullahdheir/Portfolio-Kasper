@@ -4,6 +4,7 @@
   --main-color: #19c8fa;
   --secondry-color: #1f2021;
   --padding-main: 60px;
+  --progress: 24%;
   --tranparet-color: rgba(25, 200, 250, 60%);
 }
 
@@ -136,6 +137,27 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background-color: #1db2db;
 }
+#up {
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 5px;
+  background-color: #1db2db;
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  opacity: 0;
+  transition: 0.3s linear;
+  cursor: pointer;
+  user-select: none;
+}
+#up:hover {
+  background-color: var(--main-color);
+}
+#up i::before {
+  color: white;
+  font-size: 30px;
+}
 
 /* End Componate  */
 
@@ -160,7 +182,7 @@ header .container nav::after {
   content: "";
   position: absolute;
   height: 1px;
-  display: var(--none-value);
+  display: var(--none-value, block);
   background-color: #a2a2a2;
   bottom: 0;
   width: calc(100% - 30px);
@@ -272,15 +294,17 @@ header .container .form i {
 
 .landing {
   height: 100vh;
-  background-image: url(../imgs/slider/bg1.jpg);
+  background-image: url(../imgs/slider/bg2.jpg);
   background-size: cover;
   position: relative;
   color: white;
+  transition: background-image 0.3s linear;
 }
 
 .landing .change-background {
   top: 50%;
   position: absolute;
+  cursor: pointer;
 }
 
 .landing .fa-angle-left {
@@ -338,6 +362,8 @@ header .container .form i {
   border-radius: 50%;
   border: 1px solid;
   margin: 3px;
+  cursor: pointer;
+  transition: background-color 0.3s linear;
 }
 
 .landing .balls .active {
@@ -951,7 +977,7 @@ header .container .form i {
 }
 
 .skills .content .our-skills .content-skills .prog-header .prog span::before {
-  content: attr(data-progress);
+  content: attr(data-prog);
   display: flex;
   justify-content: center;
   align-items: center;
