@@ -19,9 +19,36 @@ nav.onclick = function () {
 
 // Form Search Secation
 
-const form = document.querySelector(".landing .form");
-const searchBtn = document.querySelector(".landing .search");
+const searchBtn = document.querySelector("header .container .search");
 const searchInp = document.getElementById("search");
+const closeBtn = document.getElementById("close-btn");
+const accpetSBtn = document.getElementById("search-btn");
+const overlay = document.querySelector("header form .overlay");
+
+searchBtn.onclick = function () {
+  overlay.style.cssText = "display:block";
+  closeBtn.style.cssText = "display:block";
+  setTimeout(() => {
+    accpetSBtn.style.cssText =
+      " transform: translate(-50%, -50%);  rigth:0;  display:block;";
+    searchInp.style.cssText =
+      "transform: translate(-50%, -50%); left:50%; display:block;";
+  }, 10);
+  accpetSBtn.style.cssText =
+    " transform: translate(865px, -50%);  diplay:block;";
+  searchInp.style.cssText =
+    " transform: translate(-310px, -50%); left:0; display:block;";
+};
+closeBtn.onclick = function () {
+  accpetSBtn.style.cssText =
+    " transform: translate(865px, -50%);display:block;";
+  searchInp.style.cssText =
+    " transform: translate(-310px, -50%); left:0;display:block;";
+  setTimeout(() => {
+    overlay.style.cssText = "display:none";
+    closeBtn.style.cssText = "display:none";
+  }, 500);
+};
 
 // Slider Image Secation
 
@@ -32,7 +59,7 @@ let left = document.querySelector(".landing .left");
 let counter = 0;
 let index = 1;
 let iamge = [
-  "imgs/slider/bg3.jpg",
+  "imgs/slider/bg1.jpg",
   "imgs/slider/bg2.jpg",
   "imgs/slider/bg3.jpg",
 ];

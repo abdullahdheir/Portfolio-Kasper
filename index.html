@@ -33,16 +33,25 @@
             <li><a href="#pricing">Pricing</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
-          <form class="form">
-            <i id="search" class="fas fa-search"></i>
-            <input type="text" name="search" id="search" />
-          </form>
+          <div class="form">
+            <i class="fas fa-search search"></i>
+          </div>
         </nav>
       </div>
+      <form action="">
+        <div class="overlay"></div>
+        <i id="close-btn" class="fas fa-times"></i>
+        <button id="search-btn"><i class="fas fa-search"></i></button>
+        <input type="text" name="search" id="search" />
+      </form>
     </header>
     <!-- End NavBar -->
     <!-- Start landing  -->
-    <section class="landing" id="landing">
+    <section
+      style="background-image: url(imgs/slider/bg2.jpg)"
+      class="landing"
+      id="landing"
+    >
       <div class="text">
         <div class="content">
           <h2>
@@ -347,7 +356,7 @@
                 </p>
               </div>
             </div>
-            <ul class="balls">
+            <ul class="ball">
               <li></li>
               <li class="active"></li>
               <li></li>
